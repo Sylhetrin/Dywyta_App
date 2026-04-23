@@ -92,6 +92,7 @@
             border-radius: 12px;
             padding: 25px;
             text-align: left;
+            margin-top: 20px;
         }
         
         .instructions h2 {
@@ -141,6 +142,41 @@
             font-weight: 600;
         }
         
+        .qr-section {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 2px solid #e5e7eb;
+        }
+        
+        .qr-section h3 {
+            color: #1a1a1a;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            border: 3px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 10px;
+            background: white;
+        }
+        
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .qr-note {
+            color: #666;
+            font-size: 14px;
+            margin-top: 15px;
+            line-height: 1.5;
+        }
+        
         @media (max-width: 480px) {
             .container {
                 padding: 30px 20px;
@@ -148,6 +184,11 @@
             
             h1 {
                 font-size: 24px;
+            }
+            
+            .qr-code {
+                width: 180px;
+                height: 180px;
             }
         }
     </style>
@@ -201,6 +242,17 @@
                 <span>Aplikacja pojawi się na ekranie głównym</span>
             </div>
         </div>
+        
+        <!-- QR Code Section -->
+        <div class="qr-section">
+            <h3>📷 Zeskanuj kod QR</h3>
+            <div class="qr-code">
+                <img id="qrImage" src="" alt="Kod QR do instalacji">
+            </div>
+            <p class="qr-note">
+                Zeskanuj ten kod aparatem w telefonie, aby otworzyć stronę instalacji.
+            </p>
+        </div>
     </div>
 
     <script>
@@ -209,6 +261,11 @@
             navigator.serviceWorker.register('service-worker.js')
                 .then(() => console.log('Service Worker registered'));
         }
+
+        // Generate QR code dynamically
+        const currentUrl = encodeURIComponent(window.location.href);
+        const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${currentUrl}`;
+        document.getElementById('qrImage').src = qrApiUrl;
 
         // Detect device and show appropriate instructions
         const installButton = document.getElementById('installButton');
