@@ -1,7 +1,7 @@
 // Service Worker for Dywyta PWA
-// Basic caching strategy for offline support
+// Caches the installer page for offline access
 
-const CACHE_NAME = 'dywyta-cache-v1';
+const CACHE_NAME = 'dywyta-installer-v1';
 const urlsToCache = [
   './',
   './index.html',
@@ -10,7 +10,7 @@ const urlsToCache = [
   './icons/icon-512.png'
 ];
 
-// Install event - cache resources
+// Install event - cache installer resources
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -22,7 +22,6 @@ self.addEventListener('install', (event) => {
         console.log('Cache install failed:', err);
       })
   );
-  // Force service worker to activate immediately
   self.skipWaiting();
 });
 
@@ -40,7 +39,6 @@ self.addEventListener('activate', (event) => {
       );
     })
   );
-  // Claim all clients immediately
   self.clients.claim();
 });
 
@@ -49,21 +47,17 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request)
       .then((response) => {
-        // Return cached version if available
         if (response) {
           return response;
         }
         
-        // Clone the request
         const fetchRequest = event.request.clone();
         
         return fetch(fetchRequest).then((response) => {
-          // Don't cache non-successful responses
           if (!response || response.status !== 200 || response.type !== 'basic') {
             return response;
           }
           
-          // Clone the response
           const responseToCache = response.clone();
           
           caches.open(CACHE_NAME)
@@ -76,7 +70,6 @@ self.addEventListener('fetch', (event) => {
       })
       .catch((err) => {
         console.log('Fetch failed:', err);
-        // Return offline page if available
         return caches.match('./index.html');
       })
   );

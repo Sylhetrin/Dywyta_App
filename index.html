@@ -10,6 +10,15 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Dywyta">
     <link rel="apple-touch-icon" href="icons/icon-192.png">
+    
+    <!-- iOS Safari: When opened from home screen, redirect to dywyta.pl -->
+    <script>
+        if (window.navigator.standalone === true) {
+            // App is running from home screen - redirect to actual website
+            window.location.href = 'https://www.dywyta.pl';
+        }
+    </script>
+    
     <style>
         * {
             margin: 0;
@@ -157,6 +166,17 @@
             font-weight: 600;
         }
         
+        .note {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: left;
+            font-size: 14px;
+            color: #92400e;
+        }
+        
         @media (max-width: 480px) {
             .container {
                 padding: 30px 20px;
@@ -176,7 +196,8 @@
         <p class="subtitle">Zainstaluj aplikację na swoim telefonie</p>
         
         <div id="successMessage" class="success-message hidden">
-            ✓ Aplikacja została zainstalowana!
+            ✓ Aplikacja została zainstalowana!<br>
+            <small>Za chwilę otworzy się strona dywyta.pl</small>
         </div>
         
         <!-- Android Install Button -->
@@ -202,6 +223,9 @@
                 <span class="step-icon">✓</span>
                 <span class="step-text">Stuknij <strong>"Dodaj"</strong> w prawym górnym rogu</span>
             </div>
+            <div class="note">
+                <strong>Ważne:</strong> Po zainstalowaniu, aplikacja automatycznie otworzy stronę <strong>www.dywyta.pl</strong>
+            </div>
         </div>
         
         <!-- Generic Instructions (fallback) -->
@@ -218,6 +242,9 @@
             <div class="step">
                 <span class="step-number">3</span>
                 <span class="step-text">Aplikacja Dywyta pojawi się na ekranie głównym</span>
+            </div>
+            <div class="note">
+                <strong>Ważne:</strong> Po zainstalowaniu, aplikacja automatycznie otworzy stronę <strong>www.dywyta.pl</strong>
             </div>
         </div>
     </div>
@@ -261,6 +288,11 @@
             if (outcome === 'accepted') {
                 installButton.classList.add('hidden');
                 successMessage.classList.remove('hidden');
+                
+                // Redirect to dywyta.pl after short delay
+                setTimeout(() => {
+                    window.location.href = 'https://www.dywyta.pl';
+                }, 2000);
             }
             
             deferredPrompt = null;
