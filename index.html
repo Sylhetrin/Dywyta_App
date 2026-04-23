@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dywyta - Instalacja Aplikacji</title>
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#dc2626">
+    <meta name="theme-color" content="#ee1b24">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Dywyta">
@@ -19,7 +19,7 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            background: linear-gradient(135deg, #ee1b24 0%, #c4191f 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -40,7 +40,7 @@
         .logo {
             width: 120px;
             height: 120px;
-            background: #dc2626;
+            background: #ee1b24;
             border-radius: 25px;
             display: flex;
             align-items: center;
@@ -65,7 +65,7 @@
         }
         
         .install-button {
-            background: #dc2626;
+            background: #ee1b24;
             color: white;
             border: none;
             padding: 18px 40px;
@@ -79,7 +79,7 @@
         }
         
         .install-button:hover {
-            background: #b91c1c;
+            background: #d61820;
             transform: scale(1.02);
         }
         
@@ -105,28 +105,43 @@
         .step {
             display: flex;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             font-size: 16px;
             color: #333;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
         }
         
         .step-number {
-            background: #dc2626;
+            background: #ee1b24;
             color: white;
-            width: 32px;
-            height: 32px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
+            font-size: 18px;
             margin-right: 15px;
             flex-shrink: 0;
         }
         
         .step-icon {
-            font-size: 24px;
-            margin-right: 12px;
+            font-size: 28px;
+            margin-right: 15px;
+            width: 40px;
+            text-align: center;
+        }
+        
+        .step-text {
+            line-height: 1.4;
+        }
+        
+        .step-text strong {
+            color: #ee1b24;
+            font-weight: 600;
         }
         
         .hidden {
@@ -173,16 +188,19 @@
         <div id="iosInstructions" class="instructions hidden">
             <h2>🍎 iPhone / iPad</h2>
             <div class="step">
+                <span class="step-number">1</span>
                 <span class="step-icon">📤</span>
-                <span>Stuknij przycisk <strong>Udostępnij</strong></span>
+                <span class="step-text">Stuknij przycisk <strong>Udostępnij</strong> na dole ekranu</span>
             </div>
             <div class="step">
+                <span class="step-number">2</span>
                 <span class="step-icon">➕</span>
-                <span>Wybierz <strong>"Dodaj do ekranu głównego"</strong></span>
+                <span class="step-text">Zjedź w dół i wybierz <strong>"Do ekranu początk."</strong></span>
             </div>
             <div class="step">
+                <span class="step-number">3</span>
                 <span class="step-icon">✓</span>
-                <span>Stuknij <strong>"Dodaj"</strong> w prawym górnym rogu</span>
+                <span class="step-text">Stuknij <strong>"Dodaj"</strong> w prawym górnym rogu</span>
             </div>
         </div>
         
@@ -191,15 +209,15 @@
             <h2>📱 Jak zainstalować?</h2>
             <div class="step">
                 <span class="step-number">1</span>
-                <span>Otwórz tę stronę na telefonie</span>
+                <span class="step-text">Otwórz tę stronę na telefonie</span>
             </div>
             <div class="step">
                 <span class="step-number">2</span>
-                <span>Postępuj zgodnie z instrukcjami dla swojego urządzenia</span>
+                <span class="step-text">Postępuj zgodnie z instrukcjami dla swojego urządzenia</span>
             </div>
             <div class="step">
                 <span class="step-number">3</span>
-                <span>Aplikacja Dywyta pojawi się na ekranie głównym</span>
+                <span class="step-text">Aplikacja Dywyta pojawi się na ekranie głównym</span>
             </div>
         </div>
     </div>

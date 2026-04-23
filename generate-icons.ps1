@@ -17,8 +17,8 @@ foreach ($size in $sizes) {
         $bmp = New-Object System.Drawing.Bitmap($size, $size)
         $g = [System.Drawing.Graphics]::FromImage($bmp)
         
-        # RED background (Dywyta brand color)
-        $g.Clear([System.Drawing.Color]::FromArgb(220, 38, 38))
+        # RED background (Dywyta brand color: #ee1b24)
+        $g.Clear([System.Drawing.Color]::FromArgb(238, 27, 36))
         
         $fontSize = [Math]::Max(20, $size * 0.4)
         $font = New-Object System.Drawing.Font("Arial", $fontSize, [System.Drawing.FontStyle]::Bold)

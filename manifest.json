@@ -5,7 +5,7 @@
   "start_url": "https://www.dywyta.pl",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#dc2626",
+  "theme_color": "#ee1b24",
   "orientation": "portrait-primary",
   "icons": [
     {
