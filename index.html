@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dywyta - Instalacja Aplikacji</title>
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#2563eb">
+    <meta name="theme-color" content="#dc2626">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Dywyta">
@@ -19,7 +19,7 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -40,7 +40,7 @@
         .logo {
             width: 120px;
             height: 120px;
-            background: #2563eb;
+            background: #dc2626;
             border-radius: 25px;
             display: flex;
             align-items: center;
@@ -65,7 +65,7 @@
         }
         
         .install-button {
-            background: #2563eb;
+            background: #dc2626;
             color: white;
             border: none;
             padding: 18px 40px;
@@ -79,7 +79,7 @@
         }
         
         .install-button:hover {
-            background: #1d4ed8;
+            background: #b91c1c;
             transform: scale(1.02);
         }
         
@@ -111,7 +111,7 @@
         }
         
         .step-number {
-            background: #2563eb;
+            background: #dc2626;
             color: white;
             width: 32px;
             height: 32px;
@@ -142,41 +142,6 @@
             font-weight: 600;
         }
         
-        .qr-section {
-            margin-top: 25px;
-            padding-top: 25px;
-            border-top: 2px solid #e5e7eb;
-        }
-        
-        .qr-section h3 {
-            color: #1a1a1a;
-            font-size: 18px;
-            margin-bottom: 15px;
-        }
-        
-        .qr-code {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto;
-            border: 3px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 10px;
-            background: white;
-        }
-        
-        .qr-code img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        
-        .qr-note {
-            color: #666;
-            font-size: 14px;
-            margin-top: 15px;
-            line-height: 1.5;
-        }
-        
         @media (max-width: 480px) {
             .container {
                 padding: 30px 20px;
@@ -184,11 +149,6 @@
             
             h1 {
                 font-size: 24px;
-            }
-            
-            .qr-code {
-                width: 180px;
-                height: 180px;
             }
         }
     </style>
@@ -239,19 +199,8 @@
             </div>
             <div class="step">
                 <span class="step-number">3</span>
-                <span>Aplikacja pojawi się na ekranie głównym</span>
+                <span>Aplikacja Dywyta pojawi się na ekranie głównym</span>
             </div>
-        </div>
-        
-        <!-- QR Code Section -->
-        <div class="qr-section">
-            <h3>📷 Zeskanuj kod QR</h3>
-            <div class="qr-code">
-                <img id="qrImage" src="" alt="Kod QR do instalacji">
-            </div>
-            <p class="qr-note">
-                Zeskanuj ten kod aparatem w telefonie, aby otworzyć stronę instalacji.
-            </p>
         </div>
     </div>
 
@@ -261,11 +210,6 @@
             navigator.serviceWorker.register('service-worker.js')
                 .then(() => console.log('Service Worker registered'));
         }
-
-        // Generate QR code dynamically
-        const currentUrl = encodeURIComponent(window.location.href);
-        const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${currentUrl}`;
-        document.getElementById('qrImage').src = qrApiUrl;
 
         // Detect device and show appropriate instructions
         const installButton = document.getElementById('installButton');

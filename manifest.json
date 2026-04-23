@@ -1,11 +1,11 @@
 {
   "name": "Dywyta",
   "short_name": "Dywyta",
-  "description": "Dywyta - aplikacja webowa",
+  "description": "Dywyta - oficjalna strona internetowa",
   "start_url": "https://www.dywyta.pl",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#2563eb",
+  "theme_color": "#dc2626",
   "orientation": "portrait-primary",
   "icons": [
     {

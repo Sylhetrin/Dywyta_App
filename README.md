@@ -1,190 +1,114 @@
-# Dywyta PWA - Progressive Web App Installer
+# Dywyta PWA - Installer Page
 
-Simple PWA installer site for dywyta.pl - designed for seniors and older users.
+**One-click installer page** that adds **www.dywyta.pl** as a web app to user's home screen.
 
-## 📁 Files Included
+## 🎯 How It Works
+
+1. **User scans QR code** (printed in your shop) → Opens this GitHub Pages site
+2. **User clicks "Zainstaluj aplikację"** button (or follows iOS instructions)
+3. **www.dywyta.pl is installed** as a standalone app on their phone
+4. Done! The Dywyta website icon appears on their home screen
+
+## 📁 Files
 
 ```
 dywyta-pwa/
-├── index.html           # Main install page (Polish, senior-friendly)
-├── manifest.json        # PWA manifest
-├── service-worker.js    # Offline caching
-├── icons/
-│   ├── README.md        # Icon creation guide
-│   └── [icon-*.png]     # App icons (run generate-icons.ps1)
-├── generate-icons.ps1   # Generate placeholder icons
-├── generate-qr.ps1      # Generate QR code
-└── README.md            # This file
+├── index.html              # Installer page (RED theme, Polish)
+├── manifest.json           # Points to www.dywyta.pl
+├── service-worker.js       # Caching for dywyta.pl
+├── icons/                  # RED "D" logo icons (8 sizes)
+├── generate-icons.ps1      # Regenerate icons if needed
+├── generate-printable-qr.ps1  # Generate QR code for printing
+├── qr-code-printable.png   # HIGH-QUALITY QR for shop display
+└── README.md               # This file
 ```
 
-## 🚀 Deployment on GitHub Pages
+## 🚀 Deploy to GitHub Pages
 
-### Step 1: Create GitHub Repository
-
-1. Go to https://github.com/new
-2. Repository name: `dywyta-pwa`
-3. Make it **Public**
-4. Click **Create repository**
-
-### Step 2: Upload Files
-
-**Option A: Using Git (Recommended)**
-
+### Upload Files
 ```bash
-# Clone the repository
-git clone https://github.com/YOUR-USERNAME/dywyta-pwa.git
-cd dywyta-pwa
+# Clone or create repo: sylhetrin.github.io/Dywyta_App
+git clone https://github.com/sylhetrin/Dywyta_App.git
+cd Dywyta_App
 
-# Copy all files from this folder
-# (copy index.html, manifest.json, service-worker.js, icons/, etc.)
-
+# Copy all files here
 # Commit and push
 git add .
-git commit -m "Initial PWA commit"
+git commit -m "PWA installer for dywyta.pl"
 git push origin main
 ```
 
-**Option B: Using GitHub Web Interface**
+### Enable GitHub Pages
+1. Go to repo **Settings** → **Pages**
+2. Source: `main` branch, `/ (root)` folder
+3. Save
 
-1. Go to your repository on GitHub
-2. Click **Add file** → **Upload files**
-3. Drag and drop all files
-4. Click **Commit changes**
+Live URL: `https://sylhetrin.github.io/Dywyta_App/`
 
-### Step 3: Enable GitHub Pages
+## 🖨️ Print QR Code for Shop
 
-1. Go to repository **Settings**
-2. Click **Pages** (left sidebar)
-3. Under **Source**, select:
-   - Branch: `main` (or `master`)
-   - Folder: `/ (root)`
-4. Click **Save**
-5. Wait 1-2 minutes for deployment
+The QR code is **already generated**: `qr-code-printable.png`
 
-Your site will be live at:
-```
-https://YOUR-USERNAME.github.io/dywyta-pwa/
-```
+- **Size:** 1000x1000 px (print-ready, high quality)
+- **Colors:** Red (#dc2626) on white background
+- **Links to:** https://sylhetrin.github.io/Dywyta_App/
 
-### Step 4: Generate Icons
+### Printing Tips:
+- Print at least **5x5 cm** for easy scanning
+- Laminate for durability
+- Place at eye level near entrance/counter
+- Add caption: *"Zeskanuj aby zainstalować aplikację Dywyta"*
 
-Run the icon generator script:
-
+To regenerate (if URL changes):
 ```powershell
-cd dywyta-pwa
-.\generate-icons.ps1
+.\generate-printable-qr.ps1
 ```
 
-This creates placeholder icons with a blue "D" logo. Replace with your actual logo later.
+## 📱 User Flow
 
-### Step 5: Generate QR Code
+### Android:
+1. Scan QR → Opens installer page
+2. Tap **"📲 Zainstaluj aplikację"** button
+3. Confirm installation
+4. **www.dywyta.pl** icon appears on home screen
 
-Update the URL in `generate-qr.ps1` with your GitHub Pages URL, then run:
+### iPhone:
+1. Scan QR → Opens installer page
+2. See instructions: Share → "Dodaj do ekranu głównego" → Add
+3. **www.dywyta.pl** icon appears on home screen
 
-```powershell
-.\generate-qr.ps1
-```
+## 🎨 Branding
 
-This creates `qr-code.png` - ready to print or share!
+- **Color:** Red (#dc2626) - matches Dywyta brand
+- **Logo:** White "D" on red background
+- **Language:** Polish (senior-friendly, large text)
 
-## 📱 How It Works
+To change colors, edit:
+- `index.html` - CSS colors
+- `manifest.json` - theme_color
+- `generate-icons.ps1` - icon background color
 
-### Android Users
-1. Scan QR code
-2. Page detects Android
-3. Shows "Zainstaluj aplikację" button
-4. Tap to install → app appears on home screen
+## ✅ What Gets Installed
 
-### iOS Users
-1. Scan QR code
-2. Page shows iOS instructions
-3. User taps Share → "Dodaj do ekranu głównego"
-4. App appears on home screen
+When users install, they get:
+- **App name:** Dywyta
+- **Icon:** Red "D" logo
+- **Opens:** www.dywyta.pl
+- **Display:** Standalone (no browser UI)
+- **Offline support:** Basic caching via service worker
 
-## 🎨 Customization
+## 🔧 Testing
 
-### Change Brand Colors
-
-Edit `index.html` and `manifest.json`:
-
-```css
-/* In index.html */
-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-.theme-color: #2563eb;
-
-/* In manifest.json */
-"theme_color": "#2563eb"
-```
-
-### Replace Logo Icons
-
-1. Create a 512x512 px logo
-2. Use https://realfavicongenerator.net/
-3. Download all sizes
-4. Replace files in `icons/` folder
-
-### Change App Name
-
-Edit `manifest.json`:
-
-```json
-{
-  "name": "Your App Name",
-  "short_name": "YourApp"
-}
-```
-
-## ✅ Testing
-
-### Before Deploying
-
-1. Test locally with a simple HTTP server:
-
-```powershell
-# PowerShell (Windows 10+)
-python -m http.server 8000
-
-# Or use Node.js
-npx http-server -p 8000
-```
-
-2. Open `http://localhost:8000` on your phone
-3. Test install flow
-
-### After Deploying
-
-1. Open your GitHub Pages URL on phone
-2. Verify install button appears (Android)
-3. Verify instructions show (iOS)
-4. Test that app opens standalone
-
-## 🔧 Troubleshooting
-
-### Install Button Not Showing (Android)
-
-- Must be served over HTTPS (GitHub Pages does this automatically)
-- Must have valid manifest.json
-- Must have service worker registered
-- Chrome may require visiting twice
-
-### QR Code Not Working
-
-- Check URL is correct
-- Make sure GitHub Pages is enabled
-- Wait 1-2 minutes after deployment
-
-### Icons Not Loading
-
-- Check file names match manifest.json
-- Verify icons are in `icons/` folder
-- Clear browser cache
+1. Open https://sylhetrin.github.io/Dywyta_App/ on phone
+2. Android: Should see "Zainstaluj aplikację" button
+3. iOS: Should see step-by-step instructions
+4. After install: www.dywyta.pl opens as standalone app
 
 ## 📞 Support
 
-For issues or questions, check:
-- GitHub Pages docs: https://pages.github.com/
-- PWA basics: https://web.dev/progressive-web-apps/
+- GitHub Pages: https://pages.github.com/
+- PWA info: https://web.dev/progressive-web-apps/
 
 ---
 
-**Built for dywyta.pl** ❤️
+**Made for Dywyta.pl** ❤️
